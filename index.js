@@ -6,7 +6,7 @@ const app = express()
 const port = 3000
 app.use(cors())
 
-let products = [
+let defaultProducts = [
   {
     id: 1,
     name: 'Xiaomi iPhone 12',
@@ -236,57 +236,57 @@ app.get('/', (req, res) => {
 })
 
 app.get('/products/sort/popularity', (req, res) => {
-  const products = [...products].sort((a, b) => b.rating - a.rating)
+  const products = [...defaultProducts].sort((a, b) => b.rating - a.rating)
   res.json({products})
 })
 
 app.get('/products/sort/price-high-to-low', (req, res) => {
-  const products = [...products].sort((a, b) => a.price - b.price)
+  const products = [...defaultProducts].sort((a, b) => a.price - b.price)
   res.json({products})
 })
 
 app.get('/products/sort/price-low-to-high', (req, res) => {
-  const products = [...products].sort((a, b) => b.price - a.price)
+  const products = [...defaultProducts].sort((a, b) => b.price - a.price)
   res.json({products})
 })
 
 app.get('/products/filter/ram', (req, res) => {
-  const products = products.filter(
+  const products = defaultProducts.filter(
     (item) => item.ram === +req.query.ram || 0
   )
   res.json({products})
 })
 
 app.get('/products/filter/rom', (req, res) => {
-  const products = products.filter(
+  const products = defaultProducts.filter(
     (item) => item.rom === +req.query.rom || 0
   )
   res.json({products})
 })
 
 app.get('/products/filter/brand', (req, res) => {
-  const products = products.filter(
+  const products = defaultProducts.filter(
     (item) => item.brand === req.query.brand || ''
   )
   res.json({products})
 })
 
 app.get('/products/filter/os', (req, res) => {
-  const products = products.filter(
+  const products = defaultProducts.filter(
     (item) => item.os === req.query.os || ''
   )
   res.json({products})
 })
 
 app.get('/products/filter/price', (req, res) => {
-  const products = products.filter(
+  const products = defaultProducts.filter(
     (item) => item.price === req.query.price || ''
   )
   res.json({products})
 })
 
 app.get('/products', (req, res) => {
-  res.json({products})
+  res.json({products: defaultProducts})
 })
 
 app.listen(port, () => {
