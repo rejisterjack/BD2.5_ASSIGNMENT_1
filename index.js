@@ -236,7 +236,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/products/sort/popularity', (req, res) => {
-  const products = [...defaultProducts].sort((a, b) => b.rating - a.rating)
+  const products = [...defaultProducts].sort((a, b) => a.rating - b.rating)
   res.json({products})
 })
 
