@@ -236,17 +236,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/products/sort/popularity', (req, res) => {
-  const products = [...defaultProducts].sort((a, b) => a.rating - b.rating)
+  const products = [...defaultProducts].sort((a, b) => b.rating - a.rating)
   res.json({products})
 })
 
 app.get('/products/sort/price-high-to-low', (req, res) => {
-  const products = [...defaultProducts].sort((a, b) => a.price - b.price)
+  const products = [...defaultProducts].sort((a, b) => b.price - a.price)
   res.json({products})
 })
 
 app.get('/products/sort/price-low-to-high', (req, res) => {
-  const products = [...defaultProducts].sort((a, b) => b.price - a.price)
+  const products = [...defaultProducts].sort((a, b) => a.price - b.price)
   res.json({products})
 })
 
