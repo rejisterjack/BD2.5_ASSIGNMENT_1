@@ -241,7 +241,7 @@ app.get('/products/sort/popularity', (req, res) => {
 })
 
 app.get('/products/sort/price-high-to-low', (req, res) => {
-  const products = [...defaultProducts].sort((a, b) => a.price - b.price)
+  const products = [...defaultProducts].sort((a, b) => b.price - a.price)
   res.json({products})
 })
 
