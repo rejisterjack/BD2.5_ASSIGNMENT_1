@@ -236,53 +236,53 @@ app.get('/', (req, res) => {
 })
 
 app.get('/products/sort/popularity', (req, res) => {
-  const sortedProducts = [...products].sort((a, b) => b.rating - a.rating)
-  res.json(sortedProducts)
+  const products = [...products].sort((a, b) => b.rating - a.rating)
+  res.json({products})
 })
 
 app.get('/products/sort/price-high-to-low', (req, res) => {
-  const sortedProducts = [...products].sort((a, b) => a.price - b.price)
-  res.json(sortedProducts)
+  const products = [...products].sort((a, b) => a.price - b.price)
+  res.json({products})
 })
 
 app.get('/products/sort/price-low-to-high', (req, res) => {
-  const sortedProducts = [...products].sort((a, b) => b.price - a.price)
-  res.json(sortedProducts)
+  const products = [...products].sort((a, b) => b.price - a.price)
+  res.json({products})
 })
 
 app.get('/products/filter/ram', (req, res) => {
-  const filteredProducts = products.filter(
+  const products = products.filter(
     (item) => item.ram === +req.query.ram || 0
   )
-  res.json(filteredProducts)
+  res.json({products})
 })
 
 app.get('/products/filter/rom', (req, res) => {
-  const filteredProducts = products.filter(
+  const products = products.filter(
     (item) => item.rom === +req.query.rom || 0
   )
-  res.json(filteredProducts)
+  res.json({products})
 })
 
 app.get('/products/filter/brand', (req, res) => {
-  const filteredProducts = products.filter(
+  const products = products.filter(
     (item) => item.brand === req.query.brand || ''
   )
-  res.json(filteredProducts)
+  res.json({products})
 })
 
 app.get('/products/filter/os', (req, res) => {
-  const filteredProducts = products.filter(
+  const products = products.filter(
     (item) => item.os === req.query.os || ''
   )
-  res.json(filteredProducts)
+  res.json({products})
 })
 
 app.get('/products/filter/price', (req, res) => {
-  const filteredProducts = products.filter(
+  const products = products.filter(
     (item) => item.price === req.query.price || ''
   )
-  res.json(filteredProducts)
+  res.json({products})
 })
 
 app.get('/products', (req, res) => {
