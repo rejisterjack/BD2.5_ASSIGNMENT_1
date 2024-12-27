@@ -266,21 +266,21 @@ app.get('/products/filter/rom', (req, res) => {
 
 app.get('/products/filter/brand', (req, res) => {
   const products = defaultProducts.filter(
-    (item) => item.brand === req.query.brand || ''
+    (item) => item.brand.toLocaleLowerCase() === req.query.brand.toLocaleLowerCase() || ''
   )
   res.json({products})
 })
 
 app.get('/products/filter/os', (req, res) => {
   const products = defaultProducts.filter(
-    (item) => item.os === req.query.os || ''
+    (item) => item.os.toLocaleLowerCase() === req.query.os.toLocaleLowerCase() || ''
   )
   res.json({products})
 })
 
 app.get('/products/filter/price', (req, res) => {
   const products = defaultProducts.filter(
-    (item) => item.price === req.query.price || ''
+    (item) => item.price <= +req.query.price || 0
   )
   res.json({products})
 })
